@@ -1,0 +1,4 @@
+zafira_api_url: "api-url"
+zafira_access_token: "token"
+zafira_project_name: "project-name"
+test_suite_config_file: "conf-file"
