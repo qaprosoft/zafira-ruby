@@ -1,4 +1,11 @@
-zafira_api_url: "api-url"
+zafira_api_url: "http://localhost"
 zafira_access_token: "token"
 zafira_project_name: "project-name"
 test_suite_config_file: "conf-file"
+test_suite_name: "Suite name"
+ci_job_name: "Job name"
+ci_job_url: "/job/1"
+ci_host: "http://jenkins.qaprosoft.com/"
+ci_test_run_uuid: "00000000-0000-0000-0000-00000"
+ci_run_build_number: "123"
+zafira_enabled: false

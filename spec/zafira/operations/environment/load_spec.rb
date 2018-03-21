@@ -61,7 +61,10 @@ describe Zafira::Operations::Environment::Load do
 
             expect(loader.error_pool).to eq(
               'PARAMS [zafira_api_url,zafira_access_token,' \
-              'zafira_project_name,test_suite_config_file] are required'
+              'zafira_project_name,test_suite_config_file,' \
+              'test_suite_name,ci_job_name,ci_job_url,ci_host,' \
+              'ci_test_run_uuid,ci_run_build_number,' \
+              'zafira_enabled] are required'
             )
           end
         end
@@ -117,7 +120,7 @@ describe Zafira::Operations::Environment::Load do
         loader.call
         expect(loader.dammed?).to eq(false)
         expect(env.zafira_access_token).to eq('token')
-        expect(env.zafira_api_url).to eq('api-url')
+        expect(env.zafira_api_url).to eq('http://localhost')
         expect(env.zafira_project_name).to eq('project-name')
         expect(env.test_suite_config_file).to eq('conf-file')
       end

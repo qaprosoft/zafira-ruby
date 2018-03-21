@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :environment, class: Zafira::Models::Environment do
-    zafira_api_url 'http://zafira.com'
+    zafira_api_url 'http://localhost'
 
     ci_username 'ci_username'
     ci_user_email 'ci@zafira.com'
