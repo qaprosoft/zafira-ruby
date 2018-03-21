@@ -9,6 +9,13 @@ describe Zafira::Models::Environment do
       it { expect(constant).to include('zafira_access_token') }
       it { expect(constant).to include('zafira_project_name') }
       it { expect(constant).to include('test_suite_config_file') }
+      it { expect(constant).to include('test_suite_name') }
+      it { expect(constant).to include('ci_job_name') }
+      it { expect(constant).to include('ci_job_url') }
+      it { expect(constant).to include('ci_host') }
+      it { expect(constant).to include('ci_test_run_uuid') }
+      it { expect(constant).to include('ci_run_build_number') }
+      it { expect(constant).to include('zafira_enabled') }
     end
 
     describe 'CI_USER_PARAMS' do
@@ -23,7 +30,6 @@ describe Zafira::Models::Environment do
     describe 'TEST_SUITE_PARAMS' do
       let(:constant) { Zafira::Models::Environment::TEST_SUITE_PARAMS }
 
-      it { expect(constant).to include('test_suite_name') }
       it { expect(constant).to include('test_suite_description') }
     end
 
@@ -36,21 +42,6 @@ describe Zafira::Models::Environment do
       it { expect(constant).to include('test_suite_last_name') }
     end
 
-    describe 'JOB_PARAMS' do
-      let(:constant) { Zafira::Models::Environment::JOB_PARAMS }
-
-      it { expect(constant).to include('ci_job_name') }
-      it { expect(constant).to include('ci_job_url') }
-      it { expect(constant).to include('ci_host') }
-    end
-
-    describe 'RUN_PARAMS' do
-      let(:constant) { Zafira::Models::Environment::RUN_PARAMS }
-
-      it { expect(constant).to include('ci_test_run_uuid') }
-      it { expect(constant).to include('ci_run_build_number') }
-    end
-
     describe 'OPTIONAL_PARAMS' do
       let(:constant) { Zafira::Models::Environment::OPTIONAL_PARAMS }
 
@@ -60,7 +51,6 @@ describe Zafira::Models::Environment do
       it { expect(constant).to include('browser_version') }
       it { expect(constant).to include('app_version') }
       it { expect(constant).to include('refresh_token') }
-      it { expect(constant).to include('zafira_enabled') }
     end
   end
 end

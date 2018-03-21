@@ -37,7 +37,7 @@ module Zafira
         end
 
         def load_file
-          self.yaml_data = YAML.load_file(file_path)
+          self.yaml_data = YAML.load_file(file_path) || {}
         rescue
           dam("#{file_path_env_name} is invalid yml file")
         end
