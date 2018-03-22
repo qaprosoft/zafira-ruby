@@ -5,13 +5,9 @@ module Zafira
     module FinishedTestCase
       module Cucumber
         class Failed < Base
-          def status
-            Models::TestCase::Status::FAILED
-          end
-
           def message
-            "#{scenario.result.exception.message}\n" \
-            "#{scenario.result.exception.backtrace&.join("\n")}"
+            "#{result.exception.message}\n" \
+            "#{result.exception.backtrace&.join("\n")}"
           end
         end
       end

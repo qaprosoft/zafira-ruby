@@ -5,10 +5,6 @@ module Zafira
     module FinishedTestCase
       module Rspec
         class Failed < Base
-          def status
-            Models::TestCase::Status::FAILED
-          end
-
           def message
             output = "#{example.location}\n#{example.exception}"
 

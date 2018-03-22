@@ -44,20 +44,18 @@ FactoryBot.define do
       end
     end
 
-    test_case_handler_class OpenStruct
+    initialize_with do
+      config = OpenStruct.new(
+        test_case_handler_class: OpenStruct,
+        failed_test_case_handler_class:
+          Zafira::Handlers::FinishedTestCase::Rspec::Failed,
+        skipped_test_case_handler_class:
+          Zafira::Handlers::FinishedTestCase::Rspec::Skipped,
+        passed_test_case_handler_class:
+          Zafira::Handlers::FinishedTestCase::Rspec::Passed
+      )
 
-    failed_test_case_handler_class do
-      Zafira::Handlers::FinishedTestCase::Rspec::Failed
+      new(config)
     end
-
-    skipped_test_case_handler_class do
-      Zafira::Handlers::FinishedTestCase::Rspec::Skipped
-    end
-
-    passed_test_case_handler_class do
-      Zafira::Handlers::FinishedTestCase::Rspec::Passed
-    end
-
-    initialize_with { new(OpenStruct.new) }
   end
 end

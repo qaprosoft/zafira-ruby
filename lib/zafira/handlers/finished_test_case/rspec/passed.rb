@@ -5,10 +5,6 @@ module Zafira
     module FinishedTestCase
       module Rspec
         class Passed < Base
-          def status
-            Models::TestCase::Status::PASSED
-          end
-
           def message
             ''
           end

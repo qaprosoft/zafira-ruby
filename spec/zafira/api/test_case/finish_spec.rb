@@ -13,7 +13,8 @@ describe Zafira::Api::TestCase::Finish do
     Zafira::Api::TestCase::Finish.new(
       client,
       Zafira::Handlers::FinishedTestCase::Rspec::Passed.new(
-        client.current_test_case, test_case_result
+        client.current_test_case, test_case_result,
+        Zafira::Models::TestCase::Status::FAILED
       )
     )
   end

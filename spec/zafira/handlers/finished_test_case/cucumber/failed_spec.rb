@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-describe Zafira::Handlers::FinishedTestCase::Rspec::Failed do
+describe Zafira::Handlers::FinishedTestCase::Cucumber::Failed do
   let(:client) { build(:zafira_client, :with_current_test_case) }
   let(:example) { build(:example, :finished) }
 
   let(:wrapped_example) do
-    Zafira::Handlers::FinishedTestCase::Rspec::Failed.new(
+    Zafira::Handlers::FinishedTestCase::Cucumber::Failed.new(
       client.current_test_case, example,
       Zafira::Models::TestCase::Status::FAILED
     )
@@ -17,16 +17,9 @@ describe Zafira::Handlers::FinishedTestCase::Rspec::Failed do
     end
 
     describe '#message' do
-      before do
-        example.location = 'loc.rb:12'
-        example.exception.backtrace = %w[error1 error2]
-
-        allow(example.exception).to receive(:to_s).and_return('exception_1')
-      end
-
       it do
         expect(wrapped_example.message).to(
-          eq("loc.rb:12\nexception_1\nerror1\nerror2")
+          eq("error_message\nerror1\nerror2")
         )
       end
 
@@ -37,7 +30,7 @@ describe Zafira::Handlers::FinishedTestCase::Rspec::Failed do
 
         it do
           expect(wrapped_example.message).to(
-            eq("loc.rb:12\nexception_1")
+            eq("error_message\nerror1\nerror2")
           )
         end
       end

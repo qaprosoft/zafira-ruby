@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-describe Zafira::Handlers::FinishedTestCase::Rspec::Skipped do
+describe Zafira::Handlers::FinishedTestCase::Cucumber::Passed do
   let(:client) { build(:zafira_client, :with_current_test_case) }
   let(:example) { build(:example, :finished) }
 
   let(:wrapped_example) do
-    Zafira::Handlers::FinishedTestCase::Rspec::Skipped.new(
+    Zafira::Handlers::FinishedTestCase::Cucumber::Passed.new(
       client.current_test_case, example,
-      Zafira::Models::TestCase::Status::SKIPPED
+      Zafira::Models::TestCase::Status::PASSED
     )
   end
 
   context 'built object' do
     describe '#status' do
-      it { expect(wrapped_example.status).to eq(4) }
+      it { expect(wrapped_example.status).to eq(2) }
     end
 
     describe '#message' do

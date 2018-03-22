@@ -16,6 +16,10 @@ module Zafira
         def fail_test_case_finisning(response)
           dam("TestCase's fail failed: #{response.inspect}")
         end
+
+        def test_case_status
+          Models::TestCase::Status::FAILED
+        end
       end
     end
   end

@@ -5,13 +5,15 @@ module Zafira
     module FinishedTestCase
       module Cucumber
         class Base
-          def initialize(current_test_case, scenario)
-            self.scenario = scenario
+          def initialize(current_test_case, event, test_case_status)
             self.current_test_case = current_test_case
+            self.scenario = event.test_case
+            self.result = event.result
+            self.test_case_status = test_case_status
           end
 
           def status
-            raise NotImplementedError
+            test_case_status
           end
 
           def start_time
@@ -28,7 +30,8 @@ module Zafira
 
           private
 
-          attr_accessor :scenario, :current_test_case
+          attr_accessor :current_test_case, :scenario,
+                        :result, :test_case_status
         end
       end
     end
