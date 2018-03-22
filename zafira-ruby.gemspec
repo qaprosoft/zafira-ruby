@@ -17,19 +17,18 @@ Gem::Specification.new do |spec|
                        'Rspec and Cucumber based on formatters.' \
 
   spec.homepage      = 'https://github.com/qaprosoft/zafira-ruby'
-  spec.license       = 'Apache Software License v2.0'
+  spec.license       = 'Apache-2.0'
 
   spec.files        = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
   spec.require_path = 'lib'
 
-  spec.add_dependency 'waterfall'
-  spec.add_dependency 'builder'
-  spec.add_dependency 'httparty'
-  spec.add_dependency 'webmock'
+  spec.add_dependency 'waterfall', '~> 1.2'
+  spec.add_dependency 'builder', '~> 3.2'
+  spec.add_dependency 'httparty', '~> 0.16'
+  spec.add_dependency 'webmock', '~> 3.3'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'cucumber'
-  spec.add_development_dependency 'factory_bot'
+  spec.add_development_dependency 'factory_bot', '~> 4.8'
 end
