@@ -5,10 +5,6 @@ module Zafira
     module FinishedTestCase
       module Cucumber
         class Skipped < Base
-          def status
-            Models::TestCase::Status::SKIPPED
-          end
-
           def message
             ''
           end

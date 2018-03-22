@@ -5,13 +5,14 @@ module Zafira
     module FinishedTestCase
       module Rspec
         class Base
-          def initialize(current_test_case, example)
+          def initialize(current_test_case, example, test_case_status)
             self.example = example
             self.current_test_case = current_test_case
+            self.test_case_status = test_case_status
           end
 
           def status
-            raise NotImplementedError
+            test_case_status
           end
 
           def start_time
@@ -28,7 +29,7 @@ module Zafira
 
           private
 
-          attr_accessor :example, :current_test_case
+          attr_accessor :example, :current_test_case, :test_case_status
         end
       end
     end

@@ -28,7 +28,7 @@ module Zafira
 
         def finish_test_case
           handled_result = handle_test_case_class.new(
-            client.current_test_case, test_case_result
+            client.current_test_case, test_case_result, test_case_status
           )
 
           test_case_response =
@@ -44,6 +44,10 @@ module Zafira
         end
 
         def fail_test_case_finisning(_response)
+          raise NotImplementedError
+        end
+
+        def test_case_status
           raise NotImplementedError
         end
       end

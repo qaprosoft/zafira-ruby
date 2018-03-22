@@ -5,24 +5,24 @@ module Zafira
     attr_accessor :environment, :run_owner, :test_suite_owner,
                   :test_suite, :job, :run, :current_test_case, :unavailable
 
-    # wrappers
-    attr_accessor :test_case_handler_class,
-                  :failed_test_case_handler_class,
-                  :skipped_test_case_handler_class,
-                  :passed_test_case_handler_class
-
     def initialize(config)
-      self.test_case_handler_class =
-        config.test_case_handler_class
+      self.config = config
+    end
 
-      self.failed_test_case_handler_class =
-        config.failed_test_case_handler_class
+    def test_case_handler_class
+      config.test_case_handler_class
+    end
 
-      self.skipped_test_case_handler_class =
-        config.skipped_test_case_handler_class
+    def failed_test_case_handler_class
+      config.failed_test_case_handler_class
+    end
 
-      self.passed_test_case_handler_class =
-        config.passed_test_case_handler_class
+    def skipped_test_case_handler_class
+      config.skipped_test_case_handler_class
+    end
+
+    def passed_test_case_handler_class
+      config.passed_test_case_handler_class
     end
 
     def enabled?
@@ -34,5 +34,9 @@ module Zafira
     def disabled?
       !enabled?
     end
+
+    private
+
+    attr_accessor :config
   end
 end
