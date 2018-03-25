@@ -56,6 +56,7 @@ require 'zafira/operations/test_case/skip.rb'
 require 'zafira/operations/zafira_status/check.rb'
 require 'zafira/operations/user/registrate.rb'
 require 'zafira/operations/user/refresh_token.rb'
+require 'zafira/operations/zafira_client/validate_handlers.rb'
 
 # handlers
 require 'zafira/handlers/test_case/rspec.rb'

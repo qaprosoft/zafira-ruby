@@ -2,16 +2,11 @@
 
 describe Zafira::Models::TestCase::Builder do
   let(:client) do
-    build(:zafira_client, :with_test_suite, :with_run, :with_test_suite_owner)
+    build(:zafira_client, :with_test_suite,
+          :with_run, :with_test_suite_owner, :rspec)
   end
 
-  let(:test_case) do
-    OpenStruct.new(
-      test_class: 'test_class',
-      test_method: 'test_method',
-      info: 'info'
-    )
-  end
+  let(:test_case) { build(:example, :new) }
 
   let(:builder) { Zafira::Models::TestCase::Builder.new(client, test_case) }
   let(:wrapped_test_case) { builder.construct }
@@ -27,7 +22,7 @@ describe Zafira::Models::TestCase::Builder do
 
     describe 'test_case built and' do
       describe '#test_class' do
-        it { expect(wrapped_test_case.test_class).to eq('test_class') }
+        it { expect(wrapped_test_case.test_class).to eq('des_class') }
       end
 
       describe '#test_method' do

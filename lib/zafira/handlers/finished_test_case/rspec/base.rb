@@ -23,10 +23,6 @@ module Zafira
             example.metadata[:execution_result].finished_at.to_i
           end
 
-          def message
-            raise NotImplementedError
-          end
-
           private
 
           attr_accessor :example, :current_test_case, :test_case_status

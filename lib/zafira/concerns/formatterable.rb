@@ -7,6 +7,7 @@ module Zafira
         self.zafira_client = Zafira::Client.new(configuration)
         Operations::Environment::Load.new(zafira_client).call
         Operations::ZafiraStatus::Check.new(zafira_client).call
+        Operations::ZafiraClient::ValidateHandlers.new(zafira_client).call
       end
 
       def start_run

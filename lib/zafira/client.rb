@@ -10,19 +10,19 @@ module Zafira
     end
 
     def test_case_handler_class
-      config.test_case_handler_class
+      config&.test_case_handler_class
     end
 
     def failed_test_case_handler_class
-      config.failed_test_case_handler_class
+      config&.failed_test_case_handler_class
     end
 
     def skipped_test_case_handler_class
-      config.skipped_test_case_handler_class
+      config&.skipped_test_case_handler_class
     end
 
     def passed_test_case_handler_class
-      config.passed_test_case_handler_class
+      config&.passed_test_case_handler_class
     end
 
     def enabled?

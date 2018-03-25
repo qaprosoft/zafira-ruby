@@ -3,11 +3,11 @@
 describe Zafira::Operations::TestCase::Create do
   let(:client) do
     build(:zafira_client, :with_environment,
-          :with_test_suite, :with_test_suite_owner, :with_run)
+          :with_test_suite, :with_test_suite_owner, :with_run, :rspec)
   end
 
   let(:env) { client.environment }
-  let(:example) { build(:example) }
+  let(:example) { build(:example, :new) }
 
   let(:creator) { Zafira::Operations::TestCase::Create.new(client, example) }
 

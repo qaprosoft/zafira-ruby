@@ -3,7 +3,7 @@
 describe Zafira::Operations::TestCase::Skip do
   let(:client) do
     build(:zafira_client, :with_environment, :with_test_suite,
-          :with_test_suite_owner, :with_run, :with_current_test_case)
+          :with_test_suite_owner, :with_run, :with_current_test_case, :rspec)
   end
 
   let(:env) { client.environment }

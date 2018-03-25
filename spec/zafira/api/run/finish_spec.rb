@@ -2,7 +2,7 @@
 
 describe Zafira::Api::Run::Finish do
   let(:client) do
-    build(:zafira_client, :with_environment, :with_run_owner, :with_run)
+    build(:zafira_client, :with_environment, :with_run_owner, :with_run, :rspec)
   end
 
   let(:environment) { client.environment }

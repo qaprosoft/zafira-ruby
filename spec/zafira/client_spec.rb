@@ -6,7 +6,9 @@ describe Zafira::Client do
       let(:env) { build(:environment, zafira_enabled: false) }
 
       it do
-        expect(build(:zafira_client, environment: env).disabled?).to eq(true)
+        expect(build(:zafira_client, :rspec, environment: env).disabled?).to(
+          eq(true)
+        )
       end
     end
   end
@@ -16,12 +18,14 @@ describe Zafira::Client do
       let(:env) { build(:environment, zafira_enabled: true) }
 
       it do
-        expect(build(:zafira_client, environment: env).enabled?).to eq(true)
+        expect(build(:zafira_client, :rspec, environment: env).enabled?).to(
+          eq(true)
+        )
       end
     end
 
     context 'when environment is not loaded' do
-      it { expect(build(:zafira_client).enabled?).to eq(true) }
+      it { expect(build(:zafira_client, :rspec).enabled?).to eq(true) }
     end
   end
 end

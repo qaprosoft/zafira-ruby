@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Zafira::Operations::Environment::Load do
-  let(:client) { build(:zafira_client) }
+  let(:client) { build(:zafira_client, :rspec) }
   let(:loader) { Zafira::Operations::Environment::Load.new(client) }
 
   let(:env) { client.environment }
