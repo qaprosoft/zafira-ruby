@@ -3,7 +3,7 @@
 describe Zafira::Operations::Run::Start do
   let(:client) do
     build(:zafira_client, :with_environment,
-          :with_test_suite, :with_job, :with_run_owner)
+          :with_test_suite, :with_job, :with_run_owner, :rspec)
   end
 
   let(:env) { client.environment }

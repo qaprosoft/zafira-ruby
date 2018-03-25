@@ -2,7 +2,7 @@
 
 describe Zafira::Api::TestSuite::Create do
   let(:client) do
-    build(:zafira_client, :with_environment, :with_test_suite_owner)
+    build(:zafira_client, :with_environment, :with_test_suite_owner, :rspec)
   end
 
   let(:environment) { client.environment }

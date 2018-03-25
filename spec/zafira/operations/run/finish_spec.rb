@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Zafira::Operations::Run::Finish do
-  let(:client) { build(:zafira_client, :with_environment, :with_run) }
+  let(:client) { build(:zafira_client, :with_environment, :with_run, :rspec) }
   let(:env) { client.environment }
 
   let(:finisher) { Zafira::Operations::Run::Finish.new(client) }

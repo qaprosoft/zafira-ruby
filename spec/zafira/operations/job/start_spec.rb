@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 describe Zafira::Operations::Job::Start do
-  let(:client) { build(:zafira_client, :with_environment, :with_run_owner) }
+  let(:client) do
+    build(:zafira_client, :with_environment, :with_run_owner, :rspec)
+  end
+
   let(:env) { client.environment }
 
   let(:starter) { Zafira::Operations::Job::Start.new(client) }

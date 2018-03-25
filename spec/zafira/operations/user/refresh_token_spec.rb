@@ -2,7 +2,7 @@
 
 describe Zafira::Operations::User::RefreshToken do
   let(:client) do
-    build(:zafira_client, :with_environment)
+    build(:zafira_client, :with_environment, :rspec)
   end
 
   let(:env) { client.environment }

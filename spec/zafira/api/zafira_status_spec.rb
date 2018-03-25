@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Zafira::Api::ZafiraStatus do
-  let(:client) { build(:zafira_client, :with_environment) }
+  let(:client) { build(:zafira_client, :with_environment, :rspec) }
   let(:environment) { client.environment }
 
   let(:token) { Zafira::Api::ZafiraStatus.new(client) }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Zafira::Handlers::FinishedTestCase::Rspec::Failed do
-  let(:client) { build(:zafira_client, :with_current_test_case) }
+  let(:client) { build(:zafira_client, :with_current_test_case, :rspec) }
   let(:example) { build(:example, :finished) }
 
   let(:wrapped_example) do

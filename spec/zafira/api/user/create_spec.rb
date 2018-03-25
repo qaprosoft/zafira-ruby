@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe Zafira::Api::User::Create do
-  let(:client) { build(:zafira_client, :with_environment) }
+  let(:client) { build(:zafira_client, :with_environment, :rspec) }
   let(:environment) { client.environment }
 
   let(:create_params) do

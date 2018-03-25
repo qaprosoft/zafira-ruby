@@ -44,18 +44,16 @@ FactoryBot.define do
       end
     end
 
-    initialize_with do
-      config = OpenStruct.new(
-        test_case_handler_class: OpenStruct,
-        failed_test_case_handler_class:
-          Zafira::Handlers::FinishedTestCase::Rspec::Failed,
-        skipped_test_case_handler_class:
-          Zafira::Handlers::FinishedTestCase::Rspec::Skipped,
-        passed_test_case_handler_class:
-          Zafira::Handlers::FinishedTestCase::Rspec::Passed
-      )
+    trait :rspec do
+      initialize_with do
+        new(build(:framework_config, :rspec))
+      end
+    end
 
-      new(config)
+    trait :cucumber do
+      initialize_with do
+        new(build(:framework_config, :cucumber))
+      end
     end
   end
 end
