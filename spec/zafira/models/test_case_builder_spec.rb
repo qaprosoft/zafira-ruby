@@ -8,7 +8,13 @@ describe Zafira::Models::TestCase::Builder do
 
   let(:test_case) { build(:example, :new) }
 
-  let(:builder) { Zafira::Models::TestCase::Builder.new(client, test_case) }
+  let(:handler) do
+    Zafira::Handlers::TestCaseHandler.new(
+      client.zafira_test_case_handler_class, nil, test_case
+    )
+  end
+
+  let(:builder) { Zafira::Models::TestCase::Builder.new(client, handler) }
   let(:wrapped_test_case) { builder.construct }
 
   before do

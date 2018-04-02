@@ -8,9 +8,9 @@ module Zafira
 
         CREATE_ENDPOINT = '/api/tests/cases'
 
-        def initialize(client)
+        def initialize(client, wrapped_test_case)
           super(client)
-          self.current_test_case = client.current_test_case
+          self.wrapped_test_case = wrapped_test_case
         end
 
         def create
@@ -19,7 +19,7 @@ module Zafira
 
         private
 
-        attr_accessor :current_test_case
+        attr_accessor :wrapped_test_case
 
         def request_params
           [endpoint, body: body, headers: headers]
@@ -31,11 +31,11 @@ module Zafira
 
         def body
           {
-            testClass: current_test_case.test_class,
-            testMethod: current_test_case.test_method,
-            info: current_test_case.info,
-            testSuiteId: current_test_case.test_suite_id,
-            primaryOwnerId: current_test_case.primary_owner_id
+            testClass: wrapped_test_case.test_class,
+            testMethod: wrapped_test_case.test_method,
+            info: wrapped_test_case.info,
+            testSuiteId: client.current_test_case.test_suite_id,
+            primaryOwnerId: client.current_test_case.primary_owner_id
           }.to_json
         end
       end

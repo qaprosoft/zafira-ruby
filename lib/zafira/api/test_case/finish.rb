@@ -6,11 +6,10 @@ module Zafira
       class Finish
         include Concerns::Apiable
 
-        def initialize(client, wrapped_test_case_status)
+        def initialize(client, wrapped_test_case)
           super(client)
 
-          self.wrapped_test_case_status =
-            wrapped_test_case_status
+          self.wrapped_test_case = wrapped_test_case
         end
 
         def finish
@@ -19,7 +18,7 @@ module Zafira
 
         private
 
-        attr_accessor :wrapped_test_case_status
+        attr_accessor :wrapped_test_case
 
         def requets_params
           [endpoint, body: body, headers: headers]
@@ -39,15 +38,16 @@ module Zafira
 
         def wrapped_params
           {
-            status: wrapped_test_case_status.status,
-            message: wrapped_test_case_status.message
+            status: wrapped_test_case.status,
+            message: wrapped_test_case.message,
+            artifacts: wrapped_test_case.artifacts
           }.merge(timings)
         end
 
         def timings
           {
-            runTime: wrapped_test_case_status.start_time.to_i,
-            finishTime: wrapped_test_case_status.end_time.to_i
+            runTime: wrapped_test_case.start_time.to_i,
+            finishTime: wrapped_test_case.end_time.to_i
           }
         end
       end

@@ -16,6 +16,7 @@ require 'zafira/logging.rb'
 require 'zafira/concerns/apiable.rb'
 require 'zafira/concerns/operationable.rb'
 require 'zafira/concerns/formatterable.rb'
+require 'zafira/concerns/handlerable.rb'
 
 # models
 require 'zafira/models/environment.rb'
@@ -56,9 +57,10 @@ require 'zafira/operations/test_case/skip.rb'
 require 'zafira/operations/zafira_status/check.rb'
 require 'zafira/operations/user/registrate.rb'
 require 'zafira/operations/user/refresh_token.rb'
-require 'zafira/operations/zafira_client/validate_handlers.rb'
 
 # handlers
+require 'zafira/handlers/test_case_handler.rb'
+require 'zafira/handlers/finished_test_case_handler.rb'
 require 'zafira/handlers/test_case/rspec.rb'
 require 'zafira/handlers/finished_test_case/rspec/base.rb'
 require 'zafira/handlers/finished_test_case/rspec/failed.rb'

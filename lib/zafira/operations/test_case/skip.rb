@@ -13,6 +13,10 @@ module Zafira
           client.skipped_test_case_handler_class
         end
 
+        def zafira_handle_test_case_class
+          client.zafira_skipped_test_case_handler_class
+        end
+
         def fail_test_case_finisning(response)
           dam("TestCase's skip failed: #{response.inspect}")
         end

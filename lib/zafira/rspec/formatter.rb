@@ -18,7 +18,7 @@ module Zafira
         init(RSpec.configuration)
       end
 
-      def start(_)
+      def start(_output)
         start_run
       end
 
@@ -38,7 +38,7 @@ module Zafira
         skip_test_case(output.example)
       end
 
-      def stop(_)
+      def stop(_output)
         stop_run
       end
     end

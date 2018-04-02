@@ -9,15 +9,16 @@ describe Zafira::Api::TestCase::Finish do
   let(:environment) { client.environment }
   let(:current_test_case) { client.current_test_case }
   let(:test_case_result) { build(:example, :finished) }
+  let(:status) { Zafira::Models::TestCase::Status::FAILED }
+  let(:handler) do
+    Zafira::Handlers::FinishedTestCaseHandler.new(
+      Zafira::Handlers::FinishedTestCase::Rspec::Failed, nil,
+      client.current_test_case, test_case_result, status
+    )
+  end
 
   let(:finisher) do
-    Zafira::Api::TestCase::Finish.new(
-      client,
-      Zafira::Handlers::FinishedTestCase::Rspec::Passed.new(
-        client.current_test_case, test_case_result,
-        Zafira::Models::TestCase::Status::FAILED
-      )
-    )
+    Zafira::Api::TestCase::Finish.new(client, handler)
   end
 
   describe '#finish' do
