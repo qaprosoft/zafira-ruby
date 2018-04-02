@@ -27,9 +27,12 @@ module Zafira
         end
 
         def finish_test_case
-          handled_result = handle_test_case_class.new(
-            client.current_test_case, test_case_result, test_case_status
-          )
+          handled_result =
+            Handlers::FinishedTestCaseHandler.new(
+              zafira_handle_test_case_class, handle_test_case_class,
+              client.current_test_case, test_case_result,
+              test_case_status
+            )
 
           test_case_response =
             Api::TestCase::Finish.new(client, handled_result).finish
@@ -40,6 +43,10 @@ module Zafira
         end
 
         def handle_test_case_class
+          raise NotImplementedError
+        end
+
+        def zafira_handle_test_case_class
           raise NotImplementedError
         end
 

@@ -7,8 +7,14 @@ describe Zafira::Api::TestCase::Create do
 
   let(:environment) { client.environment }
   let(:current_test_case) { client.current_test_case }
+  let(:handler) do
+    Zafira::Handlers::TestCaseHandler.new(
+      client.zafira_test_case_handler_class,
+      client.test_case_handler_class, build(:example, :new)
+    )
+  end
 
-  let(:creator) { Zafira::Api::TestCase::Create.new(client) }
+  let(:creator) { Zafira::Api::TestCase::Create.new(client, handler) }
 
   describe '#create' do
     before do
@@ -24,11 +30,9 @@ describe Zafira::Api::TestCase::Create do
       expect(environment).to receive(:zafira_api_url).and_call_original
       expect(environment).to receive(:zafira_access_token)
 
-      expect(current_test_case).to receive(:test_class)
-      expect(current_test_case).to receive(:test_method)
-      expect(current_test_case).to receive(:info)
-      expect(current_test_case).to receive(:test_suite_id)
-      expect(current_test_case).to receive(:primary_owner_id)
+      expect(handler).to receive(:test_method)
+      expect(handler).to receive(:info)
+      expect(handler).to receive(:test_class)
 
       creator.create
     end

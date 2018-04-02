@@ -6,3 +6,6 @@ Metrics/BlockLength:
 
 Style/Documentation:
   Enabled: false
+
+Style/MixinUsage:
+  Enabled: false

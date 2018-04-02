@@ -13,6 +13,10 @@ module Zafira
           client.passed_test_case_handler_class
         end
 
+        def zafira_handle_test_case_class
+          client.zafira_passed_test_case_handler_class
+        end
+
         def fail_test_case_finisning(response)
           dam("TestCase's pass failed: #{response.inspect}")
         end

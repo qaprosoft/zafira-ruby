@@ -1,7 +1,7 @@
 
 # frozen_string_literal: true
 
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'zafira/ruby/version'
 
@@ -22,13 +22,13 @@ Gem::Specification.new do |spec|
   spec.files        = Dir['{lib}/**/*.rb', 'bin/*', 'LICENSE', '*.md']
   spec.require_path = 'lib'
 
-  spec.add_dependency 'waterfall', '~> 1.2'
   spec.add_dependency 'builder', '~> 3.2'
   spec.add_dependency 'httparty', '~> 0.16'
+  spec.add_dependency 'waterfall', '~> 1.2'
   spec.add_dependency 'webmock', '~> 3.3'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
+  spec.add_development_dependency 'factory_bot', '~> 4.8'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
-  spec.add_development_dependency 'factory_bot', '~> 4.8'
 end

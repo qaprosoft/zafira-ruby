@@ -21,15 +21,21 @@ module Zafira
 
         private
 
-        attr_accessor :client, :test_case, :test_case_id
+        attr_accessor :client, :test_case, :wrapped_test_case, :test_case_id
 
         def wrap_test_case
+          self.wrapped_test_case = Handlers::TestCaseHandler.new(
+            client.zafira_test_case_handler_class,
+            client.test_case_handler_class, test_case
+          )
+
           client.current_test_case =
-            Models::TestCase::Builder.new(client, test_case).construct
+            Models::TestCase::Builder.new(client, wrapped_test_case).construct
         end
 
         def create_test_case
-          test_case_response = Api::TestCase::Create.new(client).create
+          test_case_response =
+            Api::TestCase::Create.new(client, wrapped_test_case).create
 
           if test_case_response.code == 200
             self.test_case_id = test_case_response.parsed_response['id']

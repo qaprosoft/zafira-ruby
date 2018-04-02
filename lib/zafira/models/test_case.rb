@@ -17,22 +17,20 @@ module Zafira
       end
 
       class Builder
-        def initialize(client, test_case)
-          # wrapped example should respond to
-          # [:test_class, :test_method, :info]
-          self.wrapped_example = client.test_case_handler_class.new(test_case)
+        def initialize(client, wrapped_test_case)
           self.test_suite_id = client.test_suite.id
           self.primary_owner_id = client.test_suite_owner.id
           self.run_id = client.run.id
+          self.wrapped_test_case = wrapped_test_case
         end
 
         def construct
           test_case = TestCase.new
 
           # from wrapped example
-          test_case.test_class = wrapped_example.test_class
-          test_case.test_method = wrapped_example.test_method
-          test_case.info = wrapped_example.info
+          test_case.test_class = wrapped_test_case.test_class
+          test_case.test_method = wrapped_test_case.test_method
+          test_case.info = wrapped_test_case.info
 
           # from environment
           test_case.test_suite_id = test_suite_id
@@ -45,7 +43,7 @@ module Zafira
 
         private
 
-        attr_accessor :wrapped_example, :test_suite_id,
+        attr_accessor :wrapped_test_case, :test_suite_id,
                       :primary_owner_id, :run_id
       end
     end
