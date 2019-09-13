@@ -15,7 +15,7 @@ module Zafira
         private
 
         def request_params
-          [endpoint, body: body, headers: headers]
+          [endpoint, body: body, headers: headers_without_authorization]
         end
 
         def endpoint

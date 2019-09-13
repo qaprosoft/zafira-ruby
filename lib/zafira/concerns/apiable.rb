@@ -32,16 +32,17 @@ module Zafira
 
       # basic header params
       def headers
-        params = { 'Content-Type' => 'Application/json' }
+        params = headers_without_authorization
+
         if environment.zafira_access_token
           params['Authorization'] = 'Bearer ' + environment.zafira_access_token
         end
 
-        if environment.zafira_project_name
-          params['Project'] = environment.zafira_project_name
-        end
-
         params
+      end
+
+      def headers_without_authorization
+        { 'Content-Type' => 'Application/json' }
       end
 
       attr_accessor :client, :environment
